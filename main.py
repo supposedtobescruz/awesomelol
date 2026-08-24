@@ -27,14 +27,12 @@ LOCKFILE_PATHS = [
     r"C:\Riot Games\League of Legends Game\lockfile",
 ]
 
-BANNER = """
-\x1b[92m █████╗ ██╗    ██╗███████╗███████╗ ██████╗ ███╗   ███╗███████╗██╗      ██████╗ ██████╗ ██╗
-██╔══██╗██║    ██║██╔════╝██╔════╝██╔═══██╗████╗ ████║██╔════╝██║     ██╔═══██╗██╔══██╗██║
-███████║██║ █╗ ██║███████╗█████╗  ██║   ██║██╔████╔██║█████╗  ██║     ██║   ██║██████╔╝██║
-██╔══██║██║███╗██║╚════██║██╔══╝  ██║   ██║██║╚██╔╝██║██╔══╝  ██║     ██║   ██║██╔═══╝ ██║
-██║  ██║╚███╔███╔╝███████║███████╗╚██████╔╝██║ ╚═╝ ██║███████╗███████╗╚██████╔╝██║     ███████╗
-╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚═╝     ╚══════╝\x1b[0m
-        auto-accepts the Match Found popup so you can keep alt-tabbing
+HEADER = """
+\x1b[92m  AwesomeLoL v1.0\x1b[0m  -  auto-accept for League of Legends
+  https://github.com/supposedtobescruz/awesomelol
+
+  tip: run with --loop to keep accepting every match
+--------------------------------------------------------
 """
 
 
@@ -100,8 +98,7 @@ def countdown():
 
 
 def main():
-    # the banner uses box-drawing chars that older codepages (cp1254 etc.)
-    # can't encode once output gets piped, so force utf-8 everywhere
+    # force utf-8 so piped output can't crash on legacy codepages
     for stream in (sys.stdout, sys.stderr):
         try:
             stream.reconfigure(encoding="utf-8", errors="replace")
@@ -119,7 +116,7 @@ def main():
     options = parser.parse_args()
 
     os.system("")  # enable ANSI colors on the classic Windows console
-    print(BANNER)
+    print(HEADER)
 
     while True:
         print("[*] Waiting for the League client", end="", flush=True)
