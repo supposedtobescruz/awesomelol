@@ -75,14 +75,50 @@ Or don't bother building anything: every `v*` tag triggers a GitHub Actions work
 
 ## FAQ
 
-**Will I get banned?**
+<details>
+<summary><b>Will I get banned?</b></summary>
+
 The tool never touches game files or the match itself — it only calls endpoints your own client already exposes locally. That said, use at your own risk; Riot's stance on third-party tools can change.
 
-**I ran it while the client was closed and nothing happened.**
+</details>
+
+<details>
+<summary><b>Why does my antivirus flag the exe?</b></summary>
+
+The binary is unsigned and packed with PyInstaller, so machine-learning detectors make educated guesses instead of finding actual malware. The current release scans **63/71 engines clean** on VirusTotal — every engine that flags it reports a generic ML verdict, not a real signature:
+
+| Engine | Verdict | What it actually is |
+|---|---|---|
+| Microsoft | Trojan:Win32/Wacatac.**B!ml** | ML heuristic (`!ml` = machine learned) |
+| SentinelOne | Static AI - Suspicious PE | ML model on the PyInstaller structure |
+| Elastic | malicious (moderate confidence) | ML model |
+| APEX | Malicious | ML model |
+| K7 (x2) | Password-Stealer | Behavioral guess: the tool reads the client's command line to get its auth token |
+| Bkav | W32.Malware.* | Generic name, Bkav is a known false-positive machine |
+
+No engine reports a specific, verifiable threat — because there isn't one. Don't take our word for it:
+
+- Every release ships with a VirusTotal link in the notes — read the report yourself
+- Every build gets a [build provenance attestation](../../attestations) proving it was compiled by this repo's workflow
+- The entire source is one ~150 line file: build it yourself with the two commands above and compare
+
+Help everyone out: if your antivirus flags it, [report the false positive to Microsoft](https://www.microsoft.com/en-us/wdsi/filesubmission) (the only major engine affected) — it takes a minute.
+
+</details>
+
+<details>
+<summary><b>I ran it while the client was closed and nothing happened.</b></summary>
+
 That's by design. It waits until the League client is running.
 
-**Does it work in champion select / during a game?**
+</details>
+
+<details>
+<summary><b>Does it work in champion select / during a game?</b></summary>
+
 There's nothing left to do once the match is accepted — that's the whole point.
+
+</details>
 
 ## License
 
