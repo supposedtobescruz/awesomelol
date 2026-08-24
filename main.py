@@ -21,14 +21,15 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 INTERVAL = 1      # seconds between polls
 CLOSE_DELAY = 5   # seconds to stick around after accepting
+VERSION = "v1.0.2"
 
 LOCKFILE_PATHS = [
     r"C:\Riot Games\League of Legends\lockfile",
     r"C:\Riot Games\League of Legends Game\lockfile",
 ]
 
-HEADER = """
-\x1b[92m  AwesomeLoL v1.0\x1b[0m  -  auto-accept for League of Legends
+HEADER = f"""
+\x1b[92m  AwesomeLoL {VERSION}\x1b[0m  -  auto-accept for League of Legends
   https://github.com/supposedtobescruz/awesomelol
 
   tip: run with --loop to keep accepting every match
