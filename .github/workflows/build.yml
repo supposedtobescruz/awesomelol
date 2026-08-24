@@ -8,6 +8,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 jobs:
   build:
@@ -28,6 +30,11 @@ jobs:
 
       - name: Build executable
         run: pyinstaller --onefile --console --icon assets/icon.ico --name AwesomeLoL main.py
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: dist/AwesomeLoL.exe
 
       - name: Attach to release
         id: release
