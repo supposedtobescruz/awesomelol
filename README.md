@@ -71,7 +71,7 @@ pip install -r requirements.txt pyinstaller
 pyinstaller --onefile --console --icon assets/icon.ico --name AwesomeLoL main.py
 ```
 
-Or don't bother building anything: every `v*` tag triggers a GitHub Actions workflow that compiles the `.exe` (with the icon baked in) on a clean Windows runner and attaches it to the release automatically.
+Or don't bother building anything: every `v*` tag triggers a GitHub Actions workflow that compiles the `.exe` (with the icon baked in) on a clean Windows runner and attaches it to the release automatically. Each release binary is also uploaded to VirusTotal and the scan report link is added to the release notes.
 
 ## FAQ
 
