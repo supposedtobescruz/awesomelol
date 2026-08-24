@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/icon.png" alt="AwesomeLoL icon" width="120"/>
+
 # AwesomeLoL
 
 **Auto-accepts the "Match Found" popup in League of Legends so you can keep alt-tabbing.**
@@ -66,10 +68,10 @@ No coding required:
 
 ```bash
 pip install -r requirements.txt pyinstaller
-pyinstaller --onefile --console --name AwesomeLoL main.py
+pyinstaller --onefile --console --icon assets/icon.ico --name AwesomeLoL main.py
 ```
 
-Or don't bother building anything: every `v*` tag triggers a GitHub Actions workflow that compiles the `.exe` on a clean Windows runner and attaches it to the release automatically.
+Or don't bother building anything: every `v*` tag triggers a GitHub Actions workflow that compiles the `.exe` (with the icon baked in) on a clean Windows runner and attaches it to the release automatically.
 
 ## FAQ
 
