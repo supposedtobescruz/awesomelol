@@ -21,7 +21,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 INTERVAL = 1      # seconds between polls
 CLOSE_DELAY = 5   # seconds to stick around after accepting
-VERSION = "v1.0.2"
+VERSION = "v1.0.5"
 
 LOCKFILE_PATHS = [
     r"C:\Riot Games\League of Legends\lockfile",
