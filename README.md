@@ -16,16 +16,38 @@
 
 ---
 
-No screen scraping, no fake mouse clicks, nothing injected into the game. AwesomeLoL talks directly to the League client's own local API (LCU) and accepts your match the instant the popup appears. By default it accepts **one match and exits within 5 seconds** — pass `--loop` if you want it to stay open and accept every match.
+No screen scraping, no fake mouse clicks, nothing injected into the game. AwesomeLoL talks directly to the League client's own local API (LCU) and accepts your match the instant the popup appears. By default it accepts **one match and exits within 5 seconds** — pick **Accept every match** from the menu if you want it to stay open.
+
+## The menu
+
+Run `AwesomeLoL.exe` and you get this. Nothing is written to disk, so it looks the same every launch:
+
+```
+  AwesomeLoL v1.0.6  -  auto-accept for League of Legends
+
+    > [1] Accept once         accept 1 match, close after 5s
+       [2] Accept every match  stay open, accept all of them
+       [3] Client status       who am I, what is it doing right now
+       [0] Quit
+
+  arrows or a number, Enter confirms
+```
+
+Use the arrow keys or just type the number — `1` and `Enter` is the fastest way through. `Esc` quits from anywhere in the menu.
+
+If you know what you want, skip the menu with a flag:
+
+| Command | Does |
+|---------|------|
+| `AwesomeLoL.exe --loop` | accept every match, never exit |
+| `AwesomeLoL.exe --status` | print the logged-in summoner and the current client phase, then exit |
 
 ## What it looks like
 
 ```
-  AwesomeLoL v1.0  -  auto-accept for League of Legends
+  AwesomeLoL v1.0.6  -  auto-accept for League of Legends
   https://github.com/supposedtobescruz/awesomelol
-
-  tip: run with --loop to keep accepting every match
---------------------------------------------------------
+  --------------------------------------------------------
 
 [*] Waiting for the League client....
 [+] Connected (port 33096)
@@ -56,13 +78,6 @@ No coding required:
 4. Queue up and forget about it
 
 > Windows SmartScreen may warn about an unsigned executable. That's expected for any open-source tool without a code-signing certificate — review the source here or build it yourself below.
-
-### Options
-
-| Flag | Behavior |
-|------|----------|
-| *(none)* | Accept one match, close after 5 seconds |
-| `--loop` | Keep running and accept every match |
 
 ## Building it yourself
 
@@ -100,7 +115,7 @@ No engine reports a specific, verifiable threat — because there isn't one. Don
 
 - Every release ships with a VirusTotal link in the notes — read the report yourself
 - Every build gets a [build provenance attestation](../../attestations) proving it was compiled by this repo's workflow
-- The entire source is one ~150 line file: build it yourself with the two commands above and compare
+- The entire source is one ~250 line file: build it yourself with the two commands above and compare
 
 Help everyone out: if your antivirus flags it, [report the false positive to Microsoft](https://www.microsoft.com/en-us/wdsi/filesubmission) (the only major engine affected) — it takes a minute.
 
